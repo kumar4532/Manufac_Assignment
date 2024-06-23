@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from 'react';
+import TableOne from './components/TableOne.js';
+import TableTwo from './components/TableTwo.js';
+import { Button } from '@mantine/core';
+import "./App.css"
 
 function App() {
+  const [showTableOne, setShowTableOne] = useState(true);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <div>
+      <Button className='btn' onClick={() => setShowTableOne(!showTableOne)}>
+        {showTableOne ? 'Show Table With Min and Max Production' : 'Show Table With Average Yeild and Area'}
+      </Button>
+      <div>
+        {showTableOne ? <TableOne /> : <TableTwo />}
+      </div>
     </div>
+
+      {/* <div>
+        <TableOne />
+      </div>
+      <div>
+        <TableTwo />
+      </div> */}
+    </>
   );
 }
 
